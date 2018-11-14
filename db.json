@@ -1,0 +1,36 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "review": "This is a nice article",
+      "stars": 5
+    },
+    {
+      "id": 2,
+      "review": "hello",
+      "stars": 1
+    },
+    {
+      "review": "Try",
+      "stars": 5,
+      "id": 3
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
