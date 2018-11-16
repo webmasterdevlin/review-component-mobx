@@ -16,7 +16,7 @@ class Store {
     } catch (e) {
       if (e && e.response.status === 503)
         alert(`Review can't be saved at the moment`);
-      reviewStore.removeReview();
+      this.reviewList.pop();
     }
   }
 
@@ -38,7 +38,7 @@ class Store {
     } catch (e) {
       if (e && e.response.status === 503)
         alert(`Review can't be saved at the moment`);
-      reviewStore.addReview(reviewToRemove);
+      this.reviewList.splice(index, 0, reviewToRemove);
     }
   }
 
