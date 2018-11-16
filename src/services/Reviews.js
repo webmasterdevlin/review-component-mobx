@@ -20,3 +20,11 @@ export async function addReview(review) {
     console.log(e);
   }
 }
+
+export async function deleteReview(id) {
+  try {
+    return await http.delete(`${Endpoints.reviewUrl}/${id}`);
+  } catch (e) {
+    console.log(e);
+  }
+}

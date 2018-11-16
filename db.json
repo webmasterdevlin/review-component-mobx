@@ -14,6 +14,31 @@
       "review": "Try",
       "stars": 5,
       "id": 3
+    },
+    {
+      "review": "hello",
+      "stars": 1,
+      "id": 4
+    },
+    {
+      "review": "okay lang",
+      "stars": 3,
+      "id": 5
+    },
+    {
+      "review": "check",
+      "stars": 1,
+      "id": 6
+    },
+    {
+      "review": "isa pa",
+      "stars": 1,
+      "id": 7
+    },
+    {
+      "review": "aS",
+      "stars": 1,
+      "id": 8
     }
   ],
   "posts": [

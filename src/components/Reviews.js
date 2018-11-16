@@ -1,37 +1,29 @@
-import React from "react";
-import { observer } from "mobx-react";
-import StarRatingComponent from "react-star-rating-component";
+import React, { Component } from "react";
+import { inject, observer } from "mobx-react";
+import reviewStore from ".././Store";
+import List from "./List";
 
-function List({ data }) {
-  return (
-    <li className="list-group-item">
-      <div className="float-left">{data.review}</div>
-      <div className="float-right">
-        <StarRatingComponent name="reviewRate" starCount={data.stars} />
-      </div>
-    </li>
-  );
-}
-
-function Reviews({ store }) {
-  return (
-    <div className="reviewsWrapper">
-      <div className="row">
-        <div className="col-12">
-          <div className="card">
-            <div className="card-header">
-              <i className="fa fa-comments" /> Reviews
+export class Reviews extends Component {
+  render() {
+    return (
+      <div className="reviewsWrapper">
+        <div className="row">
+          <div className="col-12">
+            <div className="card">
+              <div className="card-header">
+                <i className="fa fa-comments" /> Reviews
+              </div>
+              <ul className="list-group list-group-flush">
+                {reviewStore.reviewList.map((e, i) => (
+                  <List key={i} data={e} />
+                ))}
+              </ul>
             </div>
-            <ul className="list-group list-group-flush">
-              {store.reviewList.map((e, i) => (
-                <List key={i} data={e} />
-              ))}
-            </ul>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default observer(Reviews);
+export default inject("reviewStore")(observer(Reviews));

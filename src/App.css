@@ -14,3 +14,11 @@
 .reviewsWrapper {
   margin-top: 50px;
 }
+
+.item {
+  border: solid 1px #f7f7f7;
+}
+
+.list-group-item {
+  list-style-type: none;
+}

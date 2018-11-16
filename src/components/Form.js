@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import { addReview } from "../services/Reviews";
+import reviewStore from ".././Store";
+import { inject, observer } from "mobx-react";
 
-export default class Form extends Component {
-  submitReview = async e => {
+class Form extends Component {
+  submitReview = e => {
     e.preventDefault();
     const review = this.review.value;
     const stars = Number(this.stars.value);
     const newReview = { review, stars };
-    this.props.store.addReview(newReview);
-    try {
-      await addReview(newReview); // addReview of axios http service
-    } catch (e) {
-      if (e && e.response.status === 503)
-        alert(`Review can't be saved at the moment`);
-      this.props.store.removeReview();
-    }
+    reviewStore.addReview(newReview);
   };
   async componentDidMount() {
-    await this.props.store.loadListOfReviews();
+    await reviewStore.loadListOfReviews();
   }
   render() {
     return (
@@ -74,3 +69,4 @@ export default class Form extends Component {
     );
   }
 }
+export default inject("reviewStore")(observer(Form));

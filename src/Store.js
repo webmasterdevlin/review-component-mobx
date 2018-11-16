@@ -1,4 +1,6 @@
-import { loadReviews } from "./services/Reviews";
+/* eslint-disable no-restricted-globals */
+import { addReview, loadReviews, deleteReview } from "./services/Reviews";
+import { action, computed, decorate, observable } from "mobx";
 
 class Store {
   reviewList = [];
@@ -7,12 +9,37 @@ class Store {
     this.reviewList = await loadReviews();
   }
 
-  addReview(review) {
+  async addReview(review) {
     this.reviewList.push(review);
+    try {
+      await addReview(review); // addReview of axios http service
+    } catch (e) {
+      if (e && e.response.status === 503)
+        alert(`Review can't be saved at the moment`);
+      reviewStore.removeReview();
+    }
   }
 
-  removeReview() {
-    this.reviewList.pop();
+  async removeReview(id) {
+    const confirmed = confirm("Delete?");
+    console.log(confirmed);
+    if (!confirmed) return;
+    console.log("Check");
+
+    const index = this.reviewList.findIndex(r => r.id === id);
+    const reviewToRemove = this.reviewList.find(r => r.id === id);
+    this.reviewList.splice(index, 1);
+    console.log(index);
+    console.log(reviewToRemove);
+    console.log("DELETING:", id);
+
+    try {
+      await deleteReview(id); // addReview of axios http service
+    } catch (e) {
+      if (e && e.response.status === 503)
+        alert(`Review can't be saved at the moment`);
+      reviewStore.addReview(reviewToRemove);
+    }
   }
 
   get reviewCount() {
@@ -26,4 +53,14 @@ class Store {
   }
 }
 
-export default Store;
+decorate(Store, {
+  reviewList: observable,
+  addReview: action,
+  removeReview: action,
+  loadListOfReviews: action,
+  averageScore: computed,
+  reviewCount: computed
+});
+
+const reviewStore = new Store();
+export default reviewStore;
