@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { addReview } from "../services/Reviews";
 import reviewStore from ".././Store";
 import { inject, observer } from "mobx-react";
 
@@ -10,6 +9,7 @@ class Form extends Component {
     const stars = Number(this.stars.value);
     const newReview = { review, stars };
     reviewStore.addReview(newReview);
+    e.target.reset();
   };
   async componentDidMount() {
     await reviewStore.loadListOfReviews();

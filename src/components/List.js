@@ -5,9 +5,8 @@ import reviewStore from "../Store";
 
 const List = ({ data }) => {
   return (
-    <a
+    <button
       className="list-group-item"
-      href="#"
       onClick={e => {
         e.preventDefault();
         reviewStore.removeReview(data.id);
@@ -19,7 +18,7 @@ const List = ({ data }) => {
           <StarRatingComponent name="reviewRate" starCount={data.stars} />
         </div>
       </li>
-    </a>
+    </button>
   );
 };
 

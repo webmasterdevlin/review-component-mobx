@@ -1,42 +1,12 @@
 {
   "reviews": [
     {
-      "id": 1,
-      "review": "This is a nice article",
-      "stars": 5
-    },
-    {
-      "id": 2,
-      "review": "hello",
-      "stars": 1
-    },
-    {
-      "review": "Try",
-      "stars": 5,
-      "id": 3
-    },
-    {
-      "review": "hello",
-      "stars": 1,
-      "id": 4
-    },
-    {
-      "review": "okay lang",
-      "stars": 3,
-      "id": 5
-    },
-    {
-      "review": "check",
-      "stars": 1,
-      "id": 6
-    },
-    {
-      "review": "isa pa",
+      "review": "Hello",
       "stars": 1,
       "id": 7
     },
     {
-      "review": "aS",
+      "review": "testing lang",
       "stars": 1,
       "id": 8
     }
